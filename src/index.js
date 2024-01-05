@@ -19,7 +19,7 @@ var corsOptions = {
   }
 }
 
-app.get('/character', cors(corsOptions), async (req, res) => {
+app.get('/character', async (req, res) => {
   try {
     const response = await axios.get(apiUrl, {
       params: {
