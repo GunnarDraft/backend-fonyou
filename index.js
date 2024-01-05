@@ -18,8 +18,8 @@ var corsOptions = {
     }
   }
 }
-
-app.get("/", async (req, res) => {
+ 
+app.get("/", cors(corsOptions), async (req, res) => {
   try {
     const response = await axios.get('https://rickandmortyapi.com/api/character', {
       params: {
