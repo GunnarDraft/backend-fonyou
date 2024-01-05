@@ -7,18 +7,6 @@ var cors = require('cors')
 
 const apiUrl = process.env.API_URL
 
-var whitelist = ['http://localhost:3000', 'https://gunnar-fonyou-demo.vercel.app']
-
-var corsOptions = {
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true)
-    } else {
-      callback(new Error('Not allowed by CORS'))
-    }
-  }
-}
-
 app.use(cors());
 
 app.get("/", async (req, res) => {
