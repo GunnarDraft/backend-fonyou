@@ -7,7 +7,7 @@ var cors = require('cors')
 
 const apiUrl = process.env.API_URL
 
-var whitelist = ['http://localhost:3000','https://gunnar-fonyou-demo.vercel.app']
+var whitelist = ['http://localhost:3000', 'https://gunnar-fonyou-demo.vercel.app','https://backend-fonyou.vercel.app']
 
 var corsOptions = {
   origin: function (origin, callback) {
@@ -18,23 +18,10 @@ var corsOptions = {
     }
   }
 }
-app.use(express.json())
 
-app.get("/", (req, res) => {
-  const htmlResponse = `
-    <html>
-      <head>
-        <title>NodeJs y Express en Vercel</title>
-      </head>
-      <body>
-        <h1>Soy un proyecto Back end en vercel</h1>
-      </body>
-    </html>
-  `;
-  res.send(htmlResponse);
-});
+app.use(cors(corsOptions))
 
-app.get('/character', async (req, res) => {
+app.get("/", async (req, res) => {
   try {
     const response = await axios.get(apiUrl, {
       params: {
@@ -43,12 +30,13 @@ app.get('/character', async (req, res) => {
       },
     });
 
-    res.json(response.data); 
+    res.json(response.data);
   } catch (error) {
-    console.error('error',error);
+    console.error('error', error);
     res.status(500).json({ error: 'Error al obtener datos de la API externa' });
   }
 });
+
 app.listen(port, () => {
   console.log("My port: " + port);
 });
