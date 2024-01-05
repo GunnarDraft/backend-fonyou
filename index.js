@@ -23,7 +23,7 @@ app.use(cors(corsOptions))
 
 app.get("/", async (req, res) => {
   try {
-    const response = await axios.get(apiUrl, {
+    const response = await axios.get('https://rickandmortyapi.com/api/character', {
       params: {
         page: req.query.page || 1,
         name: req.query.name || '',
