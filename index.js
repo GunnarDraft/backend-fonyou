@@ -18,7 +18,9 @@ var corsOptions = {
     }
   }
 }
- 
+
+app.use(cors());
+
 app.get("/", async (req, res) => {
   try {
     const response = await axios.get(apiUrl, {
