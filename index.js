@@ -7,7 +7,7 @@ var cors = require('cors')
 
 const apiUrl = process.env.API_URL
 
-var whitelist = ['http://localhost:3000', 'https://gunnar-fonyou-demo.vercel.app','https://backend-fonyou.vercel.app']
+var whitelist = ['http://localhost:3000', 'https://gunnar-fonyou-demo.vercel.app']
 
 var corsOptions = {
   origin: function (origin, callback) {
@@ -21,7 +21,7 @@ var corsOptions = {
  
 app.get("/", async (req, res) => {
   try {
-    const response = await axios.get('https://rickandmortyapi.com/api/character', {
+    const response = await axios.get(apiUrl, {
       params: {
         page: req.query.page || 1,
         name: req.query.name || '',
