@@ -18,6 +18,7 @@ var corsOptions = {
     }
   }
 }
+app.use(express.json())
 
 app.get('/character', async (req, res) => {
   try {
