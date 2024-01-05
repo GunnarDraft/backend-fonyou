@@ -20,6 +20,20 @@ var corsOptions = {
 }
 app.use(express.json())
 
+app.get("/", (req, res) => {
+  const htmlResponse = `
+    <html>
+      <head>
+        <title>NodeJs y Express en Vercel</title>
+      </head>
+      <body>
+        <h1>Soy un proyecto Back end en vercel</h1>
+      </body>
+    </html>
+  `;
+  res.send(htmlResponse);
+});
+
 app.get('/character', async (req, res) => {
   try {
     const response = await axios.get(apiUrl, {
